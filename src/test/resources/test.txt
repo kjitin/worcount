@@ -1,0 +1,10 @@
+Writing documentation is a different form of writing than most people have experience with. Technical writing is an art that doesn’t come naturally. Writing documentation will start you down the road to being a better technical writer, which is a useful skill to have as a programmer.
+Writing also becomes easier over time. If you don’t write for many months, it is a lot harder to start writing again. Keeping your projects documented will keep you writing at a reasonable cadence.
+Starting simple is the best way to achieve actual results. I will present a well-paved path to walk down, and after you have the basic idea, you can expand your scope. The tools should be powerful and easy to use. This removes obstacles to actually putting words on the page.
+Documentation also provides a platform for your first contributions. A lot of people have never contributed before, and documentation changes are a lot less scary than code changes. If you don’t have documentation, you will miss out on a whole class of contributors.
+Starting simple is the best way to achieve actual results. I will present a well-paved path to walk down, and after you have the basic idea, you can expand your scope. The tools should be powerful and easy to use. This removes obstacles to actually putting words on the page.
+BufferedReader is good if you want to read file line by line and process on them. It’s good for processing the large file and it supports encoding also.
+The choice of using a Scanner or BufferedReader or Files to read file depends on your project requirements. For example, if you are just logging the file, you can use Files and BufferedReader. If you are looking to parse the file based on a delimiter, you should use Scanner class.
+We can use Files class to read all the contents of a file into a byte array. Files class also has a method to read all lines to a list of string.
+Files class is introduced in Java 7 and it’s good if you want to load all the file contents.
+You should use this method only when you are working on small files and you need all the file contents in memory.
