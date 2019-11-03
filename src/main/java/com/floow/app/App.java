@@ -1,5 +1,9 @@
 package com.floow.app;
 
+import com.floow.app.db.MongoDataReaderService;
+import com.floow.app.db.MongoDataService;
+import com.floow.app.db.MongoReducerService;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -21,6 +25,7 @@ public class App
         CommandOptions commandOptions = new CommandOptions(args);
         String fileName = null;
         String mongoUrl = null;
+        String master = null;
 
         if (commandOptions.hasOption("-source")) {
             fileName = commandOptions.valueOf("-source");
@@ -28,26 +33,35 @@ public class App
         if (commandOptions.hasOption("-mongo")) {
             mongoUrl = commandOptions.valueOf("-mongo");
         }
+        if (commandOptions.hasOption("-master")) {
+            master = commandOptions.valueOf("-master");
+        }
 
         System.out.println("File Name "+ fileName + " mongourl "+ mongoUrl);
-        app.readFile(fileName, mongoUrl);
+        app.readFile(fileName, mongoUrl, master);
 
 
     }
 
 
-    public void readFile(String fileName, String mongoUrl) throws URISyntaxException, IOException {
+    public void readFile(String fileName, String mongoUrl, String master) throws URISyntaxException, IOException {
 
 
-        Path path = Paths.get(fileName);
+        if (master != null) {
+            Path path = Paths.get(fileName);
 
-        Stream<String> lines = Files.lines(path);
-        List<String> data = lines.collect(Collectors.toList());
-        MongoDataService mongoDataService = new MongoDataService();
+            Stream<String> lines = Files.lines(path);
+            List<String> data = lines.collect(Collectors.toList());
+            MongoDataService mongoDataService = new MongoDataService();
 
-        DataSplitter dataSplitter = new DataSplitter(mongoDataService);
+            DataSplitter dataSplitter = new DataSplitter(mongoDataService);
+            dataSplitter.split(data, mongoUrl);
+        }
 
-        dataSplitter.split(data, mongoUrl);
+        MongoDataReaderService mongoDataReaderService = new MongoDataReaderService();
+        mongoDataReaderService.read(mongoUrl);
+        MongoReducerService mongoReducerService = new MongoReducerService();
+        mongoReducerService.executeReduce(mongoUrl);
 
     }
 

@@ -1,4 +1,4 @@
-package com.floow.app;
+package com.floow.app.db;
 
 import com.mongodb.MongoCommandException;
 import com.mongodb.client.MongoClient;
@@ -8,6 +8,10 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 import java.util.ArrayList;
+
+/**
+ * Class responsible for storing data from File to DB
+ */
 
 public class MongoDataService {
 
