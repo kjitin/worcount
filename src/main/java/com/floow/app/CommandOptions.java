@@ -26,7 +26,6 @@ public class CommandOptions
         String str;
         for ( int i = 0; i < arguments.size(); i++ ) {
             str = (String)arguments.get(i);
-            System.out.println("value of str "+str);
             if ( true == str.equalsIgnoreCase(option) ) {
                 hasValue = true;
                 break;

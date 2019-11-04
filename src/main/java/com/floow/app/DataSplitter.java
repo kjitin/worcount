@@ -17,7 +17,7 @@ public class DataSplitter {
 
     public void split(List<String> inputContent, String mongoUrl) {
 
-        System.out.println("File contains "+ inputContent.size() + "lines");
+        System.out.println("File contains "+ inputContent.size() + " lines");
 
         ArrayList<String> blocks = new ArrayList<>();
 

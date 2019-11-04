@@ -37,7 +37,6 @@ public class App
             master = commandOptions.valueOf("-master");
         }
 
-        System.out.println("File Name "+ fileName + " mongourl "+ mongoUrl);
         app.readFile(fileName, mongoUrl, master);
 
 
